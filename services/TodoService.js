@@ -33,9 +33,8 @@ module.exports = class TodoService {
 	};
 
 	// List all TODO items by id
-	user(id) {
+	user() {
 		return axios.get('https://todolist-91688.firebaseio.com/todolist.json')
-		// .then((data) => Object.values(data.data).filter(u => u.user_id === id)) //parseInt(req.params.user_id)))
 	};
 
 };
