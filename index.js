@@ -9,7 +9,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-let todoService = new TodoService(axios);
+let todoService = new TodoService();
 
 app.use('/api',new TodoRouter(todoService).router());
 

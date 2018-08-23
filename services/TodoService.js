@@ -1,12 +1,24 @@
 const axios = require('axios');
 
 module.exports = class TodoService {
-	constructor(axios) {
-		this.axios = axios;
+	constructor() {
+
 	};
 
 	// Create TodoList
 	create(reqData) {
+		/* 
+			Simple Invalidation 
+			========================
+			- if user_id or todo_name are null/undefined or if todo_name is empty string
+			  return invalid input message
+			- todo_deadline can be null
+		*/
+		if (!reqData.user_id || !reqData.todo_name || reqData.todo_name.trim() === "") {
+			return new Promise((resolve, reject) => {
+				throw "INVALID_INPUT";
+			});
+		}
 		return axios.post('https://todolist-91688.firebaseio.com/todolist.json', {
 			user_id: reqData.user_id,
 			todo_name: reqData.todo_name,
@@ -32,9 +44,9 @@ module.exports = class TodoService {
 		return axios.delete(`https://todolist-91688.firebaseio.com/todolist/${id}.json`);
 	};
 
-	// List all TODO items by id
-	user() {
-		return axios.get('https://todolist-91688.firebaseio.com/todolist.json')
+	// List all TODO items
+	all() {
+		return axios.get('https://todolist-91688.firebaseio.com/todolist.json');
 	};
 
 };

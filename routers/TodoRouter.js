@@ -19,32 +19,33 @@ class TodoRouter {
 	post(req, res) {
 		return this.todoService.create(req.body)
 			.then((data) => res.json(data.data))
-			.catch((err) => res.json(err.status));
+			.catch((err) => res.json({ errMsg: err }));
 	};
 
 	get(req, res) {
-		//Validation Logic
 		return this.todoService.list(req.params.id)
 			.then((data) => res.json(data.data))
-			.catch((err) => res.json(err.status));
+			.catch((err) => res.json({ errMsg: err }));
 	};
 
 	patch(req, res) {
 		return this.todoService.update(req.params.id, req.body.todo_deadline)
 			.then((data) => res.json(data.data))
-			.catch((err) => res.json(err.status));
+			.catch((err) => res.json({ errMsg: err }));
 	};
 
 	delete(req, res) {
-		return this.todoService.delete(req.params.id)
-			.then(() => res.json('Success'))
-			.catch((err) => res.json(err.status));
+		return this.todoService.list(req.params.id)
+			.then((data) => (!data.data) ? res.json(400, { errMsg: "DATA_DOES_NOT_EXIST" }) : this.todoService.delete(req.params.id))
+			.then(() => this.todoService.list(req.params.id))
+			.then((data) => (!data.data) ? res.json('Success') : res.json(400, { errMsg: "DELETE_FAILED" }))
+			.catch((err) => res.json({'err': err}))
 	};
 
 	getUser(req, res) {
-		return this.todoService.user(req.params.id)
+		return this.todoService.all(req.params.id)
 		.then((data) => res.json(Object.values(data.data).filter(u => u.user_id === Number(req.params.id))))
-		.catch((err) => res.json(err.status));
+		.catch((err) => res.json({ errMsg: err }));
 	};
 
 };
