@@ -7,23 +7,25 @@ Deliverables/ Assumptions:
 - You can choose what methods to use for each API and their respective request and response formats.
 - All TODO Items are stored in Google Firebase or Firestore (it’s free to use).
 - NO Authentication is required.
+
 - Optional: 
 - Share your API collection using Postman Collection URL
 - https://www.getpostman.com/collections/5906c2bd4f8c524d8bd0
 - Unit testing
 
 
-* Dependencies (require)
+# Dependencies (require)
+
 - NodeJS
-    - express
-    - body-parser
     - axios
+    - body-parser
+    - express
 
 - Jasmine
 
-* instruction (step)
-
-Clone this repo: 
+# instruction (step)
+    
+Clone this repo and navigate into it: 
 $git clone git@github.com:LucasNG521/TodoList.git
 $cd TodoList
 
@@ -34,9 +36,9 @@ You can start the server by calling node with the script in your command prompt:
 $node index.js
 
 
-API Functions:
+# API Functions:
 
-API 1) Add a TODO Item with the following data 
+## API 1) Add a TODO Item with the following data 
 Request
 User ID
 TODO Name
@@ -47,7 +49,7 @@ Response
 TODO ID
 
 
-API 2) Read a TODO Item
+## API 2) Read a TODO Item
 Request
 TODO ID
 
@@ -58,7 +60,7 @@ TODO Name
 TODO Deadline
 
 
-API 3) Change the Deadline of a TODO item
+## API 3) Change the Deadline of a TODO item
 Request
 TODO ID
 TODO Deadline
@@ -70,7 +72,7 @@ TODO Name
 TODO Deadline (New Deadline)
 
 
-API 4) Delete a TODO item
+## API 4) Delete a TODO item
 Request
 TODO ID
 
@@ -78,7 +80,7 @@ Response
 Success/ Error
 
 
-API 5) List all TODO items
+## API 5) List all TODO items
 Request
 User ID
 
