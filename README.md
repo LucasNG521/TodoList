@@ -158,7 +158,10 @@
 
     ```json
     {
-        "todo_deadline": "new_todo_deadline"
+        "created_time": "Thu Aug 23 2018 18:50:03 GMT+0800 (Hong Kong Standard Time)",
+        "todo_deadline": "new_todo_deadline",
+        "todo_name": "Dinner",
+        "user_id": 3
     }
     ```
 

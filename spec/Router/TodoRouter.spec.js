@@ -31,7 +31,7 @@ describe("TodoRouter", () => {
     todoService = jasmine.createSpyObj("todoService", {
       create: Promise.resolve({ data: [1] }),
       list: Promise.resolve({ data: todolist }),
-      update: Promise.resolve({ data: [1] }),
+      update: Promise.resolve({ data: todolist }),
       delete: Promise.resolve(),
       all: Promise.resolve({ data: todolist }),
     });
@@ -62,7 +62,7 @@ describe("TodoRouter", () => {
 
   it("should support patch method", (done) => {
     todoRouter.patch(req, res).then(() => {
-      expect(res.json).toHaveBeenCalledWith([1]);
+      expect(res.json).toHaveBeenCalledWith(todolist);
       done();
     });
   });

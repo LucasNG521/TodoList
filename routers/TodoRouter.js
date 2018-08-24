@@ -30,6 +30,7 @@ class TodoRouter {
 
 	patch(req, res) {
 		return this.todoService.update(req.params.id, req.body.todo_deadline)
+			.then(() => {return this.todoService.list(req.params.id)})
 			.then((data) => res.json(data.data))
 			.catch((err) => res.json({ errMsg: err }));
 	};
